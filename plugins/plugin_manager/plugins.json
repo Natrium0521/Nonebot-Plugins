@@ -1,0 +1,158 @@
+{
+    "echo": {
+        "desc": "描述: 复读xxx\n命令:\n  群聊: @me echo xxx\n  私聊: echo xxx",
+        "allow_group": [
+        ],
+        "ban_group": [
+            "all"
+        ],
+        "allow_user": [
+        ],
+        "ban_user": [
+            "all"
+        ],
+        "on_group": [
+            "all"
+        ],
+        "off_group": [],
+        "on_user": [
+            "all"
+        ],
+        "off_user": [],
+        "manager": [
+            "all"
+        ]
+    },
+    "bili_tool": {
+        "desc": "B站小工具\n  1.消息中包含AV号、BV号、EP号、b23短链时自动发送封面等信息(如有多个BV号等只处理第一个)\n  2.每周必看:\n每周必看 --获取本周B站每周必看列表\n订阅每周必看 --每周五18:30自动发送每周必看列表(如果B站没有更新则会发送上周的)\n取消订阅每周必看 --取消自动发送\n  3.B站热搜:\nB站热搜 --获取当前B站Top10热搜\nB站热搜 全 --获取当前B站热搜列表\nB站热搜 n --获取当前B站第n位热搜\n\n⚠️关闭此插件只会停止对上述关键词/命令的响应, 不会影响每周必看的订阅",
+        "allow_group": [
+            "all"
+        ],
+        "ban_group": [],
+        "allow_user": [
+            "all"
+        ],
+        "ban_user": [],
+        "on_group": [
+            "all"
+        ],
+        "off_group": [],
+        "on_user": [
+            "all"
+        ],
+        "off_user": [],
+        "manager": [
+            "admin"
+        ]
+    },
+    "复读坤": {
+        "desc": "练习时长两年半的bot, 喜欢复读\n概率大抵是2.33%",
+        "allow_group": [
+            "all"
+        ],
+        "ban_group": [],
+        "allow_user": [],
+        "ban_user": [
+            "all"
+        ],
+        "on_group": [
+            "all"
+        ],
+        "off_group": [],
+        "on_user": [],
+        "off_user": [
+            "all"
+        ],
+        "manager": [
+            "admin"
+        ]
+    },
+    "懒狗搜索": {
+        "desc": "既然你连浏览器都懒得开, 那么有什么问题就发送\"百度xxx\"吧(不用加空格)\n必应也可",
+        "allow_group": [
+            "all"
+        ],
+        "ban_group": [],
+        "allow_user": [
+            "all"
+        ],
+        "ban_user": [],
+        "on_group": [
+            "all"
+        ],
+        "off_group": [],
+        "on_user": [
+            "all"
+        ],
+        "off_user": [],
+        "manager": [
+            "admin"
+        ]
+    },
+    "翻译": {
+        "desc": "接入百度翻译API\n所有翻译指令应分为\"命令\"与\"文本\", 两者以一个空格隔开\n\n命令:\n    翻译 xxx --自动识别xxx语言并翻译成中文(如果xxx是中文则翻译成英文)\n    aa翻译成bb xxx --将aa的xxx翻译成bb, aa省略则自动识别语言\n    a译b xxx --ab均为单字且不可省略\n如:\n翻译 苹果\n英语翻译成法语 good morning\n翻译成日语 bonjour\n英译汉 banana\n\n支持语言: 中文, 英语, 粤语, 文言文, 日语, 韩语, 法语, 西班牙语, 泰语, 阿拉伯语, 俄语, 葡萄牙语, 德语, 意大利语, 希腊语, 荷兰语, 波兰语, 保加利亚语, 爱沙尼亚语, 丹麦语, 芬兰语, 捷克语, 罗马尼亚语, 斯洛文尼亚语, 瑞典语, 匈牙利语, 繁体中文, 越南语",
+        "allow_group": [
+            "all"
+        ],
+        "ban_group": [],
+        "allow_user": [
+            "all"
+        ],
+        "ban_user": [],
+        "on_group": [
+            "all"
+        ],
+        "off_group": [],
+        "on_user": [
+            "all"
+        ],
+        "off_user": [],
+        "manager": [
+            "admin"
+        ]
+    },
+    "今日新闻": {
+        "desc": "每天60秒读懂世界\n(其实是前一天的新闻)\n\n使用\"今日新闻\"获取\n使用\"/今日新闻\"清除缓存并获取\n\"订阅今日新闻\"每天凌晨两点自动发送\n\"取消订阅今日新闻\"取消定时发送\n⚠️关闭此插件只会停止对上述四条命令的响应, 不会影响订阅\n\nAPI来自网络, 小概率出现获取失败或更新不及时, 请等待修复或稍后再试",
+        "allow_group": [
+            "all"
+        ],
+        "ban_group": [],
+        "allow_user": [
+            "all"
+        ],
+        "ban_user": [],
+        "on_group": [
+            "all"
+        ],
+        "off_group": [],
+        "on_user": [
+            "all"
+        ],
+        "off_user": [],
+        "manager": [
+            "manager"
+        ]
+    },
+    "PLUGIN_EXAMPLE": {
+        "desc": "NO_DESCRIPTION",
+        "allow_group": [],
+        "ban_group": [
+            "all"
+        ],
+        "allow_user": [],
+        "ban_user": [
+            "all"
+        ],
+        "on_group": [],
+        "off_group": [
+            "all"
+        ],
+        "on_user": [],
+        "off_user": [
+            "all"
+        ],
+        "manager": [
+            "manager",
+        ]
+    }
+}
