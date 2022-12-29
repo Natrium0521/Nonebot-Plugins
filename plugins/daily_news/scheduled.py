@@ -12,7 +12,9 @@ scheduler = require("nonebot_plugin_apscheduler").scheduler
 @scheduler.scheduled_job("cron", hour=2, minute=0)
 async def _():
     today = datetime.date.today()
-    bot = get_driver().bots["104502494"]
+    driver = get_driver()
+    BOT_ID = str(driver.config.bot_id)
+    bot = driver.bots[BOT_ID]
     scheduled = getScheduled()
     p: str
     try:
