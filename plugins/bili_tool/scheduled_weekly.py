@@ -26,7 +26,9 @@ async def _():
             return
     except:
         return
-    bot = get_driver().bots["104502494"]
+    driver = get_driver()
+    BOT_ID = str(driver.config.bot_id)
+    bot = driver.bots[BOT_ID]
     scheduled = getScheduled()
     messages = json2messages(wl)
     for g in scheduled["groups"]:
