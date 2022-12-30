@@ -49,6 +49,22 @@ async def _(event: Event, matcher: Matcher):
             await on_cv.finish(f"{cv}不存在或被删除")
         return
     matcher.stop_propagation()
+    if "read-article-holder" not in str(bs.select(".article-content")[0]):
+        scripts = bs.select("script")
+        s = ""
+        for ss in scripts:
+            if "__INITIAL_STATE__" in str(ss):
+                s = str(ss)
+                break
+        c = re.compile('"content".*"keywords"').findall(s)[0][11:-12]
+        if c[:39] == "{&#34;ops&#34;:[{&#34;insert&#34;:&#34;":
+            c = c[39:-8]
+        c = re.sub(r"\\\\n", "<br>", c)
+        article = re.sub(
+            '<div .*article-content" .*article-content">(?:.|\n)*?<\/div>',
+            f'<div id="article-content" class="article-content"><div id="read-article-holder" class="normal-article-holder read-article-holder">{c}</div></div>',
+            article,
+        )
     article = re.sub('data-src="//i0.hdslb.com', 'src="https://i0.hdslb.com', article)
     article = re.sub("data-src", "src", article)
     j = requests.get(f"https://api.bilibili.com/x/article/viewinfo?id={cv[2:]}&mobi_app=pc&from=web").json()
@@ -58,7 +74,7 @@ async def _(event: Event, matcher: Matcher):
     article = re.sub('<div class="card-image__image".*?<\/div>', f'<img src="{j["data"]["banner_url"]}" width="660" height="370">', article)
     u = requests.get(f'https://api.bilibili.com/x/web-interface/card?mid={j["data"]["mid"]}&article=true').json()
     article = re.sub(
-        '<div class="avatar-container".*?<\/div>',
+        '<div class="avatar-container.*?<\/div>',
         f'<div class="avatar-container" data-v-904253a6=""><a><div class="bili-avatar" style="width: 100%;height:100%;"><img src="{u["data"]["card"]["face"]}" width="44" height="44"></div></a></div>',
         article,
     )
