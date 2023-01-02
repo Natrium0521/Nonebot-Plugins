@@ -7,7 +7,7 @@ import urllib
 
 from ..plugin_manager.plugin_state import checkAllow, checkOn
 
-searcher = on_startswith({"百度", "baidu", "csdn", "CSDN", "必应", "Bing", "bing"}, priority=20, block=True)
+searcher = on_startswith({"百度", "baidu", "csdn", "CSDN", "必应", "Bing", "bing", "谷歌", "google", "Google"}, priority=20, block=True)
 searcher_dict = {
     "百度": "https://www.baidu.com/s?wd={}",
     "baidu": "https://www.baidu.com/s?wd={}",
@@ -16,6 +16,9 @@ searcher_dict = {
     "必应": "https://cn.bing.com/search?q={}&ensearch=0",
     "bing": "https://cn.bing.com/search?q={}&ensearch=1",
     "Bing": "https://cn.bing.com/search?q={}&ensearch=1",
+    "谷歌": "https://www.google.com/search?q={}",
+    "google": "https://www.google.com/search?q={}",
+    "Google": "https://www.google.com/search?q={}",
 }
 
 
@@ -32,7 +35,7 @@ async def _(event: Event, matcher: Matcher):
         return
     msg = str(event.get_message())
     message = ""
-    for i in range(5, 0, -1):
+    for i in range(7, 0, -1):
         if msg[:i] in searcher_dict:
             message = searcher_dict[msg[:i]].format(str(urllib.parse.quote(msg[i:])))
             break
