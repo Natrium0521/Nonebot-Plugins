@@ -133,6 +133,26 @@
             "manager"
         ]
     },
+    "qrcode_tool": {
+        "desc": "二维码工具(不用加方括号)\nqr[文本] --将文本转成二维码图片\nqr[图片] --提取图片中二维码",
+        "allow_group": [
+            "all"
+        ],
+        "ban_group": [],
+        "allow_user": [
+            "all"
+        ],
+        "ban_user": [],
+        "on_group": [
+            "all"
+        ],
+        "off_group": [],
+        "on_user": [
+            "all"
+        ],
+        "off_user": [],
+        "manager": []
+    },
     "PLUGIN_EXAMPLE": {
         "desc": "NO_DESCRIPTION",
         "allow_group": [],
