@@ -7,7 +7,7 @@ import urllib
 
 from ..plugin_manager.plugin_state import checkAllow, checkOn
 
-searcher = on_startswith({"百度", "baidu", "csdn", "CSDN", "必应", "Bing", "bing", "谷歌", "google", "Google"}, priority=20, block=True)
+searcher = on_startswith({"百度", "baidu", "csdn", "CSDN", "必应", "Bing", "bing", "谷歌", "google", "Google", "github", "GitHub"}, priority=20, block=True)
 searcher_dict = {
     "百度": "https://www.baidu.com/s?wd={}",
     "baidu": "https://www.baidu.com/s?wd={}",
@@ -19,6 +19,8 @@ searcher_dict = {
     "谷歌": "https://www.google.com/search?q={}",
     "google": "https://www.google.com/search?q={}",
     "Google": "https://www.google.com/search?q={}",
+    "github": "https://github.com/search?q={}",
+    "GitHub": "https://github.com/search?q={}",
 }
 
 
