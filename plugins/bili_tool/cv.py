@@ -57,12 +57,35 @@ async def _(event: Event, matcher: Matcher):
                 s = str(ss)
                 break
         c = re.compile('"content".*"keywords"').findall(s)[0][11:-12]
-        if c[:39] == "{&#34;ops&#34;:[{&#34;insert&#34;:&#34;":
-            c = c[39:-8]
-        c = re.sub(r"\\\\n", "<br>", c)
+        c = re.sub("&#34;", '"', c)
+        with open("/home/ubuntu/natrium/bot/test/1.html", "w") as f:
+            f.write(c)
+        final = ""
+        if "ops" in c:
+            j = json.loads(c)
+            for i in j["ops"]:
+                p = "<p"
+                if "attributes" in i:
+                    for a in i["attributes"]:
+                        p += f' {a}="{i["attributes"][a]}"'
+                p = p + ">{}</p>"
+                if type(i["insert"]) == str:
+                    final += p.format(i["insert"])
+                    continue
+                if "native-image" in i["insert"]:
+                    _ = {"url": "src", "width": "width", "height": "height", "alt": "alt"}
+                    im = "<img"
+                    for __ in _:
+                        if __ in i["insert"]["native-image"]:
+                            im += f' {_[__]}="{i["insert"]["native-image"][__]}"'
+                    im += ">"
+                    final += p.format(im)
+        else:
+            final = c
+        final = re.sub(r"\\\\n", "<br>", final)
         article = re.sub(
             '<div .*article-content" .*article-content">(?:.|\n)*?<\/div>',
-            f'<div id="article-content" class="article-content"><div id="read-article-holder" class="normal-article-holder read-article-holder">{c}</div></div>',
+            f'<div id="article-content" class="article-content"><div id="read-article-holder" class="normal-article-holder read-article-holder">{final}</div></div>',
             article,
         )
     article = re.sub('data-src="//i0.hdslb.com', 'src="https://i0.hdslb.com', article)
