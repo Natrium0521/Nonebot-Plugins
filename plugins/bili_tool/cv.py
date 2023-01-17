@@ -58,8 +58,6 @@ async def _(event: Event, matcher: Matcher):
                 break
         c = re.compile('"content".*"keywords"').findall(s)[0][11:-12]
         c = re.sub("&#34;", '"', c)
-        with open("/home/ubuntu/natrium/bot/test/1.html", "w") as f:
-            f.write(c)
         final = ""
         if "ops" in c:
             j = json.loads(c)
