@@ -26,7 +26,7 @@ async def _(event: Event, matcher: Matcher):
         msg = bvr.headers["Location"]
         bv = re.compile("BV[0-9a-zA-Z]{10}").findall(msg)[0]
     except:
-        await on_b23.finish("b23短链不存在")
+        await on_b23.finish("b23短链不存在或是直播间链接")
     part = 0
     ps = re.compile("(?:\?|&)p=\d+").findall(msg)
     if len(ps):
