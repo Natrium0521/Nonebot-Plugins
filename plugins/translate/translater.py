@@ -17,14 +17,20 @@ from ..plugin_manager.plugin_state import checkAllow, checkOn
 
 
 def isZH(s: str) -> bool:
-    zh = 0
-    l = len(s)
-    for c in s:
-        if "\u4e00" <= c <= "\u9fa5":
-            zh += 1
-            if zh * 4 >= l * 3:
-                return True
-    return False
+    try:
+        j = requests.get("https://fanyi.baidu.com/langdetect?query=" + urllib.parse.quote(s)).json()
+        if j["lan"] == "zh":
+            return True
+        return False
+    except:
+        zh = 0
+        l = len(s)
+        for c in s:
+            if "\u4e00" <= c <= "\u9fa5":
+                zh += 1
+                if zh * 4 >= l * 3:
+                    return True
+        return False
 
 
 def getMonth() -> str:
