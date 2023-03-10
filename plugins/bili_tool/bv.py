@@ -23,6 +23,7 @@ def bv2message(bv: str, part: int = 0) -> Message:
     picjson = requests.get(f"https://api.bilibili.com/x/web-interface/view?cid={cid}&bvid={bv}").json()
     if picjson["code"] != 0:
         return Message("未知错误 请稍后再试")
+    aid = picjson["data"]["aid"]
     title = picjson["data"]["title"]
     allp = len(picjson["data"]["pages"])
     nlnk = "https://www.bilibili.com/video/" + bv
@@ -46,6 +47,12 @@ def bv2message(bv: str, part: int = 0) -> Message:
     message = Message(f"{title}\n")
     message += MessageSegment.image(coverlink)
     message += Message(f"\n{nlnk}\nUP: {upper}\n上传时间: {upt}\n播放量: {view}\n点赞: {like}\n投币: {coin}\n收藏: {fav}\n分享: {share}\n评论: {reply}\n弹幕: {danmaku}")
+    try:
+        replyjson = requests.get(f"https://api.bilibili.com/x/v2/reply/main?mode=3&next=0&oid={aid}&plat=1&seek_rpid=&type=1").json()
+        hotreply = replyjson["data"]["replies"][0]["content"]["message"]
+        message += Message(f"\n热评: {hotreply}")
+    except:
+        print("ERR to get hot reply")
     return message
 
 
